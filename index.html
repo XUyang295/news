@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="核验后整理的全球 AI 权威资讯简报，覆盖 OpenAI、Google、Microsoft、Anthropic、百度、腾讯及中文社区。">
+  <title>AI SIGNAL / 权威资讯简报</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Cpath d='M16 44 28 18h8l12 26h-8l-2-5H26l-2 5Zm13-12h6l-3-8Z' fill='%23fff'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#0a0a0a;--paper:#f4f4f1;--muted:#6e6e68;--line:#cfcfc9;--soft:#e7e7e2;--white:#fff;--ease:cubic-bezier(.2,.8,.2,1)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .shell{max-width:1480px;margin:0 auto;padding:0 34px 72px}
+    .topbar{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);position:sticky;top:0;background:rgba(244,244,241,.94);backdrop-filter:blur(12px);z-index:10}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.04em;font-size:1.08rem}
+    .brand-mark{width:19px;height:19px;background:var(--ink);display:grid;place-items:center;color:white;font-size:10px;border-radius:50%}
+    .edition{font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(310px,.55fr);gap:56px;padding:72px 0 54px;border-bottom:1px solid var(--ink)}
+    .eyebrow,.label{font-size:.72rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}
+    h1{font-size:clamp(3.8rem,8.4vw,8.6rem);line-height:.86;letter-spacing:-.075em;margin:24px 0 28px;max-width:950px;font-weight:900}
+    .hero-copy{max-width:710px;font-size:1.08rem;color:#31312e;margin:0}
+    .hero-meta{align-self:end}
+    .meta-block{padding:17px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:18px;font-size:.9rem}
+    .meta-block:first-child{border-top:1px solid var(--ink)}
+    .meta-key{color:var(--muted)}
+    .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-right:8px;animation:pulse 2s infinite}
+    @keyframes pulse{50%{opacity:.28}}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}
+    .metric{padding:26px 20px 29px 0;border-right:1px solid var(--line)}
+    .metric:not(:first-child){padding-left:28px}.metric:last-child{border-right:0}
+    .metric strong{display:block;font-size:2.5rem;line-height:1;letter-spacing:-.05em;margin-bottom:10px}
+    .metric span{color:var(--muted);font-size:.84rem}
+    .workspace{display:grid;grid-template-columns:255px minmax(0,1fr);gap:44px;padding-top:46px}
+    .sidebar{position:sticky;top:110px;align-self:start}
+    .filter-title{padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:9px}
+    .filter{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:14px 0;display:flex;justify-content:space-between;cursor:pointer;color:var(--muted);text-align:left;transition:color .2s var(--ease),padding .2s var(--ease)}
+    .filter:hover,.filter.active{color:var(--ink);padding-left:8px}.filter.active:after{content:'●';font-size:.55rem;align-self:center}
+    .method{margin-top:36px;padding:18px;background:var(--ink);color:white}
+    .method p{font-size:.79rem;line-height:1.6;color:#cfcfca;margin:11px 0 0}
+    .main{min-width:0}
+    .controls{display:flex;gap:16px;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--ink)}
+    .count{font-size:.84rem;color:var(--muted)}
+    .search{width:min(320px,48%);border:0;border-bottom:1px solid var(--line);background:transparent;padding:10px 0;outline:none;border-radius:0;color:var(--ink)}
+    .search:focus{border-color:var(--ink)}
+    .feed{display:flex;flex-direction:column}
+    .card{display:grid;grid-template-columns:116px minmax(0,1fr) 170px;gap:28px;padding:34px 0;border-bottom:1px solid var(--line);transition:background .25s var(--ease),padding .25s var(--ease)}
+    .card:hover{background:var(--white);padding-left:18px;padding-right:18px}
+    .date{font-size:.86rem;font-variant-numeric:tabular-nums}.date b{display:block;font-size:2rem;line-height:1;letter-spacing:-.04em}
+    .kicker{display:flex;gap:8px;align-items:center;margin-bottom:12px;color:var(--muted);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+    .source-dot{width:6px;height:6px;border-radius:50%;background:var(--ink)}
+    h2{font-size:clamp(1.42rem,2.3vw,2.1rem);letter-spacing:-.045em;line-height:1.14;margin:0 0 14px;max-width:800px}
+    .summary{margin:0;color:#3f3f3b;max-width:820px}
+    .context{margin:17px 0 0;padding-left:13px;border-left:2px solid var(--ink);font-size:.87rem;color:var(--muted)}
+    .source-box{align-self:start;border-top:1px solid var(--ink);padding-top:12px;font-size:.77rem}
+    .verify{display:flex;align-items:center;gap:7px;font-weight:720;margin-bottom:14px}.verify:before{content:'✓';display:grid;place-items:center;width:18px;height:18px;border:1px solid var(--ink);border-radius:50%;font-size:.66rem}
+    .source-link{display:block;padding:8px 0;border-bottom:1px solid var(--line);transition:padding .2s var(--ease)}.source-link:hover{padding-left:5px}.source-link span{float:right}
+    .community .verify:before{content:'↔'}
+    .empty{display:none;padding:72px 0;text-align:center;color:var(--muted)}
+    .principles{margin-top:68px;background:var(--ink);color:white;padding:50px;display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+    .principles h3{font-size:2.8rem;line-height:1;letter-spacing:-.055em;margin:12px 0 0}.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.principle{border-top:1px solid #666;padding-top:15px}.principle b{font-size:.78rem;letter-spacing:.09em}.principle p{font-size:.84rem;color:#bdbdb8;margin:9px 0 0}
+    footer{display:flex;justify-content:space-between;gap:30px;padding-top:28px;color:var(--muted);font-size:.76rem}
+    .hidden{display:none!important}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.hero-meta{display:grid;grid-template-columns:repeat(2,1fr)}.meta-block{display:block}.workspace{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:24px}.method{margin:0}.card{grid-template-columns:90px 1fr}.source-box{grid-column:2}.principles{grid-template-columns:1fr}.principle-grid{gap:18px}}
+    @media(max-width:680px){.shell{padding:0 18px 52px}.topbar{height:62px}.edition{display:none}.hero{padding:48px 0 38px;gap:34px}h1{font-size:clamp(3.2rem,18vw,5rem)}.hero-meta{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric{padding:22px 15px!important}.sidebar{grid-template-columns:1fr}.controls{align-items:flex-start;flex-direction:column}.search{width:100%}.card{grid-template-columns:1fr;gap:12px;padding:28px 0}.date{display:flex;align-items:baseline;gap:7px}.date b{display:inline;font-size:1rem}.source-box{grid-column:1}.principles{padding:34px 24px;gap:40px}.principle-grid{grid-template-columns:1fr}.principles h3{font-size:2.2rem}footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a href="#top" class="brand"><span class="brand-mark">A</span>AI SIGNAL</a>
+      <div class="edition">Authority Edition · 2026.09</div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Verified intelligence / 2026.09.16</div>
+          <h1>AI，去噪<br>之后。</h1>
+          <p class="hero-copy">从官方发布到中文社区，只保留可回溯、可交叉确认的信息。每条简报都呈现时间、背景、核心内容与来源链路。</p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-block"><span class="meta-key">状态</span><span><i class="live-dot"></i>本期已核验</span></div>
+          <div class="meta-block"><span class="meta-key">采集范围</span><span>全球模型 / 产品 / 安全 / 社区</span></div>
+          <div class="meta-block"><span class="meta-key">采信规则</span><span>官网优先，社交内容须回链一手材料</span></div>
+          <div class="meta-block"><span class="meta-key">时间基准</span><span>北京时间（UTC+8）</span></div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="本期数据概览">
+        <div class="metric"><strong>08</strong><span>条高置信资讯</span></div>
+        <div class="metric"><strong>06</strong><span>条官方一手发布</span></div>
+        <div class="metric"><strong>02</strong><span>条中文社区观察</span></div>
+        <div class="metric"><strong>100%</strong><span>来源可回溯</span></div>
+      </section>
+
+      <section class="workspace">
+        <aside class="sidebar">
+          <div>
+            <div class="filter-title label">频道筛选</div>
+            <button class="filter active" data-filter="all">全部资讯</button>
+            <button class="filter" data-filter="global">全球厂商</button>
+            <button class="filter" data-filter="china">中国厂商</button>
+            <button class="filter" data-filter="community">社区雷达</button>
+          </div>
+          <div class="method">
+            <div class="label">核验说明</div>
+            <p>企业新闻以官网为最高优先级。知乎、微博、微信公众号用于发现讨论线索，关键事实必须由官方公告或产品页确认；无法核验的判断不进入简报。</p>
+          </div>
+        </aside>
+
+        <div class="main">
+          <div class="controls">
+            <div class="count"><span id="visibleCount">8</span> 条结果 · 按发布时间倒序</div>
+            <input id="search" class="search" type="search" placeholder="搜索公司、模型或主题…" aria-label="搜索资讯">
+          </div>
+
+          <div class="feed" id="feed">
+            <article class="card" data-date="2026-09-10" data-category="global" data-search="openai agents api 智能体 codex 开发者">
+              <div class="date"><b>10</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>OpenAI · 产品</div><h2>OpenAI 推出 Agents API 公测，把 Codex 的智能体运行框架开放给开发者</h2><p class="summary">开发者可用一次 API 调用指定任务、模型、工具与运行环境，构建可长时间运行、管理上下文并协调子智能体的云端 Agent。</p><p class="context"><b>背景：</b>智能体竞争正从“模型会不会调用工具”转向“长任务能否稳定运行”。OpenAI 将已在 Codex 中验证的 harness 与托管基础设施产品化。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://openai.com/index/introducing-the-agents-api/" target="_blank" rel="noopener">OpenAI 官方公告 <span>↗</span></a></div>
+            </article>
+
+            <article class="card" data-date="2026-09-10" data-category="global" data-search="anthropic claude 安全 滥用 threat intelligence 威胁情报">
+              <div class="date"><b>10</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>Anthropic · 安全</div><h2>Anthropic 发布 9 月威胁情报，披露并阻断 Claude 被用于恶意活动的案例</h2><p class="summary">报告总结过去八个月观察到的滥用模式与处置案例，重点说明恶意使用方式相较 2025 年的变化，并将结果用于改进防护体系。</p><p class="context"><b>背景：</b>前沿模型能力持续提升，厂商开始把真实世界的滥用监测纳入常态化安全披露，而不仅依赖发布前评测。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://www.anthropic.com/threat-intelligence" target="_blank" rel="noopener">Anthropic 威胁情报 <span>↗</span></a></div>
+            </article>
+
+            <article class="card" data-date="2026-09-09" data-category="global" data-search="google ai plans gemini spark gmail docs sheets 订阅">
+              <div class="date"><b>09</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>Google · 产品</div><h2>Google 更新 AI 订阅计划，Gemini 进一步进入邮件、文档、表格与照片工作流</h2><p class="summary">新能力包括在 Gmail、Docs、Keep 中使用语音处理任务，以提示词生成 Sheets 交互式 mini-app，以及 Gemini Spark 联动 Chrome 与 Google Photos 执行网页事务和图片整理。</p><p class="context"><b>背景：</b>Google 正把 Gemini 从独立聊天入口嵌入 Workspace 与消费产品，竞争焦点由“问答能力”转向跨应用任务完成。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://blog.google/products-and-platforms/products/google-one/fall-2026-ai-plan-updates/" target="_blank" rel="noopener">Google 官方博客 <span>↗</span></a></div>
+            </article>
+
+            <article class="card community" data-date="2026-09-09" data-category="community" data-search="知乎 gpt-6 astra computer use 实测 302.ai 社区">
+              <div class="date"><b>09</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>知乎 · 社区观察</div><h2>知乎认证机构实测 GPT‑6 Astra：Computer Use 明显进步，但“已达 AGI”仍属观点</h2><p class="summary">社区实测聚焦多模态、3D 构建与电脑操作，结论认为 Astra 更接近高度自主化 Agent。页面仅采信与 OpenAI 官方材料一致的能力范围，不采信无法独立验证的体验外推。</p><p class="context"><b>核验：</b>“计算机操作与专业工作能力提升”可由 OpenAI 发布页确认；“是否 AGI”为作者判断，已明确与事实分离。</p></div>
+              <div class="source-box"><div class="verify">社区信号 + 官方核验</div><a class="source-link" href="https://zhuanlan.zhihu.com/p/2081083094136894659" target="_blank" rel="noopener">知乎认证机构号 <span>↗</span></a><a class="source-link" href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI 发布页 <span>↗</span></a></div>
+            </article>
+
+            <article class="card community" data-date="2026-09-04" data-category="community" data-search="微博 gpt-6 astra 热议 社区舆情 openai">
+              <div class="date"><b>04</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>微博 · 社区观察</div><h2>微博围绕 GPT‑6 Astra 的“自主执行”能力形成集中讨论，官方资料支持能力升级但不等于全面自治</h2><p class="summary">微博讨论将焦点放在从聊天问答到复杂任务执行的转变。简报仅保留“模型强化计算机操作、软件工程与多步骤工作”这一可由官方材料验证的部分。</p><p class="context"><b>核验：</b>社区帖中的训练规模、开放节奏等细节未全部获得一手材料支持，因此不纳入事实摘要。</p></div>
+              <div class="source-box"><div class="verify">舆情信号 + 限定核验</div><a class="source-link" href="https://weibo.com/2/detail/5339789877578159" target="_blank" rel="noopener">微博公开讨论 <span>↗</span></a><a class="source-link" href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI 发布页 <span>↗</span></a></div>
+            </article>
+
+            <article class="card" data-date="2026-09-01" data-category="global" data-search="microsoft 微软 responsible ai 透明度 报告 治理 agent">
+              <div class="date"><b>01</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>Microsoft · 治理</div><h2>Microsoft 发布 2026 负责任 AI 透明度报告，将治理重点扩展到智能体全生命周期</h2><p class="summary">报告强调自适应治理、技术风险管理和可操作工具，新增对智能体身份、工具权限、行为监控以及提示注入防御的关注。</p><p class="context"><b>背景：</b>当 AI 能够记忆、调用工具和代用户执行动作，风险控制对象已从单一模型输出扩大为模型、Agent、应用、数据与人的组合系统。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://blogs.microsoft.com/on-the-issues/2026/09/01/responsible-ai-in-2026-how-we-are-adapting-for-whats-ahead/" target="_blank" rel="noopener">Microsoft 官方博客 <span>↗</span></a></div>
+            </article>
+
+            <article class="card" data-date="2026-08-28" data-category="china" data-search="腾讯 混元 hy4 preview 开源 1m 上下文 生产力">
+              <div class="date"><b>28</b>AUG / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>腾讯 · 模型</div><h2>腾讯发布并开源 Hy4 preview，主打 1M 上下文与真实生产力任务</h2><p class="summary">官方披露模型总参数 770B、激活参数 49B，上下文长度超过 1M，并同步接入 WorkBuddy、CodeBuddy、腾讯元宝与 ima 等产品。</p><p class="context"><b>背景：</b>国内开源模型正在把竞争延伸到代码、办公、科研和超长上下文场景，模型研发也开始与真实产品反馈形成共设计闭环。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://www.tencent.com/zh-cn/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener">腾讯官方新闻 <span>↗</span></a></div>
+            </article>
+
+            <article class="card" data-date="2026-09-11" data-category="china" data-search="百度 ai 文档矫正 去手写 ocr 公测 视觉 文档">
+              <div class="date"><b>11</b>SEP / 2026</div>
+              <div><div class="kicker"><span class="source-dot"></span>百度 · 产品</div><h2>百度 AI 开放平台公测文档矫正增强 V2 与文档去手写 V2</h2><p class="summary">两项能力面向扫描件与办公文档处理，分别改善形变、版面与图像质量，并支持从文档中去除手写内容，服务后续 OCR 和结构化处理。</p><p class="context"><b>背景：</b>在大模型进入企业知识工作流后，前置的文档清洗与识别质量仍决定检索、问答和自动化流程的可靠性上限。</p></div>
+              <div class="source-box"><div class="verify">官方一手信息</div><a class="source-link" href="https://ai.baidu.com/support/news" target="_blank" rel="noopener">百度 AI 开放平台 <span>↗</span></a></div>
+            </article>
+          </div>
+          <div id="empty" class="empty">没有找到匹配的资讯。</div>
+        </div>
+      </section>
+
+      <section class="principles">
+        <div><div class="label">Editorial standard</div><h3>可信，比<br>更快重要。</h3></div>
+        <div class="principle-grid">
+          <div class="principle"><b>01 / 一手优先</b><p>模型、产品与政策信息，优先引用发布方官网、官方博客和公告。</p></div>
+          <div class="principle"><b>02 / 事实分层</b><p>把可验证事实、企业自述、社区体验与作者观点清楚分开。</p></div>
+          <div class="principle"><b>03 / 链路透明</b><p>每条资讯保留来源入口；社交平台信息同时给出核验材料。</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>AI SIGNAL · Curated intelligence for decision makers</span><span>采集截止 2026.09.16 · 页面内容不构成投资或安全建议</span></footer>
+  </div>
+  <script>
+    const cards=[...document.querySelectorAll('.card')], filters=[...document.querySelectorAll('.filter')], search=document.getElementById('search'), count=document.getElementById('visibleCount'), empty=document.getElementById('empty');
+    cards.sort((a,b)=>b.dataset.date.localeCompare(a.dataset.date)).forEach(card=>document.getElementById('feed').appendChild(card));
+    let active='all';
+    function render(){const q=search.value.trim().toLowerCase();let n=0;cards.forEach(card=>{const matchCategory=active==='all'||card.dataset.category===active;const matchText=!q||card.dataset.search.toLowerCase().includes(q)||card.innerText.toLowerCase().includes(q);const show=matchCategory&&matchText;card.classList.toggle('hidden',!show);if(show)n++});count.textContent=n;empty.style.display=n?'none':'block'}
+    filters.forEach(btn=>btn.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));btn.classList.add('active');active=btn.dataset.filter;render()}));search.addEventListener('input',render);
+  </script>
+</body>
+</html>
+
